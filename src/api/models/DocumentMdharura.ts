@@ -55,10 +55,7 @@ export interface DocumentMdharuraAttributes {
   UNIT_PARENT_PARENT_DATELASTREPORTED_UPDATEDAT: Date;
   UNIT_PARENT_PARENT_DATELASTREPORTED_CREATEDAT: Date;
 
-  USER_ID: string;
-  USER_CREATEDAT: Date;
-  USER_UPDATEDAT: Date;
-  USER_STATUS: string;
+  USER: string;
 
   SIGNALID: string;
   SIGNAL: string;
@@ -451,16 +448,40 @@ export interface DocumentMdharuraAttributes {
   LEBS_ESCALATIONFORM_CREATEDAT: Date;
   LEBS_ESCALATIONFORM_UPDATEDAT: Date;
 
+  PMEBS_ID: string;
+  PMEBS_CREATEDAT: Date;
+  PMEBS_UPDATEDAT: Date;
+
+  PMEBS_REPORTFORM_ID: string;
+  PMEBS_REPORTFORM_USER: string;
+  PMEBS_REPORTFORM_DATEDETECTED: Date;
+  PMEBS_REPORTFORM_DESCRIPTION: string;
+  PMEBS_REPORTFORM_SOURCE: string;
+  PMEBS_REPORTFORM_UNIT: string;
+  PMEBS_REPORTFORM_LOCALITY: string;
+  PMEBS_REPORTFORM_DATEREPORTED: Date;
+  PMEBS_REPORTFORM_VIA: string;
+  PMEBS_REPORTFORM_CREATEDAT: Date;
+  PMEBS_REPORTFORM_UPDATEDAT: Date;
+
+  PMEBS_REQUESTFORM_ID: string;
+  PMEBS_REQUESTFORM_USER: string;
+  PMEBS_REQUESTFORM_DESCRIPTION: string;
+  PMEBS_REQUESTFORM_UNIT: string;
+  PMEBS_REQUESTFORM_LOCALITY: string;
+  PMEBS_REQUESTFORM_DATEREPORTED: Date;
+  PMEBS_REQUESTFORM_DATEREQUESTED: Date;
+  PMEBS_REQUESTFORM_VIA: string;
+  PMEBS_REQUESTFORM_CREATEDAT: Date;
+  PMEBS_REQUESTFORM_UPDATEDAT: Date;
+
   id: number;
 }
 
 export type DocumentMdharuraInput = Optional<DocumentMdharuraAttributes, 'id'>;
 
 class DocumentMdharura extends Model<DocumentMdharuraAttributes> implements DocumentMdharuraAttributes {
-  public USER_ID: string;
-  public USER_CREATEDAT: Date;
-  public USER_UPDATEDAT: Date;
-  public USER_STATUS: string;
+  public USER: string;
   public _ID: string;
   public _STATUS: string;
   public UNIT_ID: string;
@@ -882,6 +903,31 @@ class DocumentMdharura extends Model<DocumentMdharuraAttributes> implements Docu
   public LEBS_ESCALATIONFORM_CREATEDAT: Date;
   public LEBS_ESCALATIONFORM_UPDATEDAT: Date;
 
+  public PMEBS_ID: string;
+  public PMEBS_CREATEDAT: Date;
+  public PMEBS_UPDATEDAT: Date;
+  public PMEBS_REPORTFORM_ID: string;
+  public PMEBS_REPORTFORM_USER: string;
+  public PMEBS_REPORTFORM_DATEDETECTED: Date;
+  public PMEBS_REPORTFORM_DESCRIPTION: string;
+  public PMEBS_REPORTFORM_SOURCE: string;
+  public PMEBS_REPORTFORM_UNIT: string;
+  public PMEBS_REPORTFORM_LOCALITY: string;
+  public PMEBS_REPORTFORM_DATEREPORTED: Date;
+  public PMEBS_REPORTFORM_VIA: string;
+  public PMEBS_REPORTFORM_CREATEDAT: Date;
+  public PMEBS_REPORTFORM_UPDATEDAT: Date;
+  public PMEBS_REQUESTFORM_ID: string;
+  public PMEBS_REQUESTFORM_USER: string;
+  public PMEBS_REQUESTFORM_DESCRIPTION: string;
+  public PMEBS_REQUESTFORM_UNIT: string;
+  public PMEBS_REQUESTFORM_LOCALITY: string;
+  public PMEBS_REQUESTFORM_DATEREPORTED: Date;
+  public PMEBS_REQUESTFORM_DATEREQUESTED: Date;
+  public PMEBS_REQUESTFORM_VIA: string;
+  public PMEBS_REQUESTFORM_CREATEDAT: Date;
+  public PMEBS_REQUESTFORM_UPDATEDAT: Date;
+
   public id: number;
 }
 
@@ -1086,19 +1132,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
 
-    USER_ID: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    USER_CREATEDAT: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    USER_UPDATEDAT: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    USER_STATUS: {
+    USER: {
       type: DataTypes.STRING,
       allowNull: false,
     },
@@ -2563,6 +2597,104 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_UPDATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+
+    PMEBS_ID: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_CREATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_UPDATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_ID: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_USER: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_DATEDETECTED: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_DESCRIPTION: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_SOURCE: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_UNIT: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_LOCALITY: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_DATEREPORTED: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_VIA: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_CREATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REPORTFORM_UPDATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_ID: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_USER: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_DESCRIPTION: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_UNIT: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_LOCALITY: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_DATEREPORTED: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_DATEREQUESTED: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+
+    PMEBS_REQUESTFORM_VIA: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_CREATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: true,
+    },
+    PMEBS_REQUESTFORM_UPDATEDAT: {
       type: DataTypes.DATE,
       allowNull: true,
     },
