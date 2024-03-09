@@ -1,4 +1,12 @@
+import { DocumentMdharuraIndicatorsInput } from 'api/models/DocumentMdharuraIndicators';
 import { DocumentMdharuraInput } from '../../api/models/DocumentMdharura';
+
+export type MdharuraIndicatorsQueryParams = {
+  unitId: string;
+  dateStart?: string;
+  dateEnd?: string;
+  state?: 'live' | 'test';
+};
 
 export const MDHARURA_INDICATORS = {
   'SURV.IND.EBS01': 'CEBS_SIGNALS_REPORTED',
@@ -28,7 +36,7 @@ export const MDHARURA_INDICATORS = {
 export type Indicator = {
   name: string;
   code: string;
-  value: number | string;
+  value: number;
 };
 
 export type User = {
@@ -398,6 +406,48 @@ export type Task = {
   version: string;
 };
 
+export function formatIndicator(
+  unit: Unit,
+  indicators: Map<string, number>,
+): Omit<DocumentMdharuraIndicatorsInput, 'DATE_START' | 'DATE_END'> {
+  return {
+    UNIT_ID: unit._id,
+    UNIT_NAME: unit.name,
+    UNIT_CREATEDAT: unit.createdAt,
+    UNIT_UPDATEDAT: unit.updatedAt,
+    UNIT_CODE: unit.code,
+    UNIT_UID: unit.uid,
+    UNIT_STATE: unit.state,
+    UNIT_TYPE: unit.type,
+    COUNTY: unit.parent?.parent?.name,
+    SUBCOUNTY: unit.parent?.name,
+
+    HEBS_SIGNALS_REPORTED: indicators['HEBS_SIGNALS_REPORTED'],
+    HEBS_SIGNALS_VERIFIED: indicators['HEBS_SIGNALS_VERIFIED'],
+    HEBS_SIGNALS_VERIFIED_TRUE: indicators['HEBS_SIGNALS_VERIFIED_TRUE'],
+    HEBS_SIGNALS_RISK_ASSESSED: indicators['HEBS_SIGNALS_RISK_ASSESSED'],
+    HEBS_SIGNALS_RESPONDED: indicators['HEBS_SIGNALS_RESPONDED'],
+    HEBS_SIGNALS_TO_BE_ESCALATED: indicators['HEBS_SIGNALS_TO_BE_ESCALATED'],
+    HEBS_SIGNALS_ESCALATED: indicators['HEBS_SIGNALS_ESCALATED'],
+
+    CEBS_SIGNALS_REPORTED: indicators['CEBS_SIGNALS_REPORTED'],
+    CEBS_SIGNALS_VERIFIED: indicators['CEBS_SIGNALS_VERIFIED'],
+    CEBS_SIGNALS_VERIFIED_TRUE: indicators['CEBS_SIGNALS_VERIFIED_TRUE'],
+    CEBS_SIGNALS_RISK_ASSESSED: indicators['CEBS_SIGNALS_RISK_ASSESSED'],
+    CEBS_SIGNALS_RESPONDED: indicators['CEBS_SIGNALS_RESPONDED'],
+    CEBS_SIGNALS_TO_BE_ESCALATED: indicators['CEBS_SIGNALS_TO_BE_ESCALATED'],
+    CEBS_SIGNALS_ESCALATED: indicators['CEBS_SIGNALS_ESCALATED'],
+    CHVS_REGISTERED: indicators['CHVS_REGISTERED'],
+    CHVS_REPORTING: indicators['CHVS_REPORTING'],
+    CHAS_REGISTERED: indicators['CHAS_REGISTERED'],
+    CHAS_VERIFYING: indicators['CHAS_VERIFYING'],
+    HCWS_REGISTERED: indicators['HCWS_REGISTERED'],
+    HCWS_REPORTING: indicators['HCWS_REPORTING'],
+    SFPS_REGISTERED: indicators['SFPS_REGISTERED'],
+    SFPS_VERIFYING: indicators['SFPS_VERIFYING'],
+  };
+}
+
 export function formatTask(task: Task): DocumentMdharuraInput {
   return {
     _ID: task._id,
@@ -405,7 +455,7 @@ export function formatTask(task: Task): DocumentMdharuraInput {
     UNIT_ID: task.unit._id,
     UNIT_NAME: task.unit.name,
     UNIT_CREATEDAT: task.unit.createdAt,
-    UNIT_UPDATEDAT: task.unit.createdAt,
+    UNIT_UPDATEDAT: task.unit.updatedAt,
     UNIT_CODE: task.unit.code,
     UNIT_UID: task.unit.uid,
     UNIT_STATE: task.unit.state,

@@ -242,6 +242,7 @@ DocumentMdharuraIndicators.init(
       {
         fields: ['DATE_START'],
       },
+
       {
         fields: ['DATE_END'],
       },
@@ -249,13 +250,16 @@ DocumentMdharuraIndicators.init(
         fields: ['UNIT_ID'],
       },
       {
-        fields: ['COUNTY', 'SUBCOUNTY', 'UNIT_ID'],
+        fields: ['UNIT_NAME'],
       },
       {
-        fields: ['COUNTY', 'SUBCOUNTY', 'UNIT_NAME'],
+        fields: ['COUNTY'],
       },
       {
-        fields: ['COUNTY', 'SUBCOUNTY'],
+        fields: ['SUBCOUNTY'],
+      },
+      {
+        fields: ['COUNTY', 'SUBCOUNTY', 'UNIT_ID', 'UNIT_NAME'],
       },
       {
         fields: ['UNIT_ID', 'DATE_START', 'DATE_END'],
