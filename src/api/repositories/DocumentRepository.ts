@@ -24,7 +24,11 @@ class DocumentRepository implements IDocumentRepository {
   }
 
   bulkCreateMdharuraDocument(payload: DocumentMdharuraInput[]): Promise<DocumentMdharura[]> {
+    let updateFields = Object.keys(DocumentMdharura.getAttributes());
+    updateFields = updateFields.filter((field) => ['id', 'createdAt'].includes(field) == false);
+
     return DocumentMdharura.bulkCreate(payload, {
+      updateOnDuplicate: updateFields as (keyof DocumentMdharuraInput)[],
       conflictAttributes: ['_ID'],
     });
   }
@@ -38,7 +42,11 @@ class DocumentRepository implements IDocumentRepository {
   bulkCreateMdharuraIndicatorsDocument(
     payload: DocumentMdharuraIndicatorsInput[],
   ): Promise<DocumentMdharuraIndicators[]> {
+    let updateFields = Object.keys(DocumentMdharuraIndicators.getAttributes());
+    updateFields = updateFields.filter((field) => ['id', 'createdAt'].includes(field) == false);
+
     return DocumentMdharuraIndicators.bulkCreate(payload, {
+      updateOnDuplicate: updateFields as (keyof DocumentMdharuraIndicatorsInput)[],
       conflictAttributes: ['UNIT_ID', 'DATE_START', 'DATE_END'],
     });
   }

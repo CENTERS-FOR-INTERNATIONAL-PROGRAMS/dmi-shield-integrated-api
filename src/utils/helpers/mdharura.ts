@@ -1,11 +1,34 @@
 import { DocumentMdharuraIndicatorsInput } from 'api/models/DocumentMdharuraIndicators';
 import { DocumentMdharuraInput } from '../../api/models/DocumentMdharura';
 
-export type MdharuraIndicatorsQueryParams = {
+export type MdharuraIndicatorsQuery = {
   unitId: string;
   dateStart?: string;
   dateEnd?: string;
   state?: 'live' | 'test';
+};
+
+export type MdharuraUnitsQuery = {
+  unitId?: string;
+  q?: string;
+  parent?: string;
+  type?: Unit['type'];
+  sort?: string;
+  page?: number;
+  limit?: number;
+  state?: 'live' | 'test';
+};
+
+export type MdharuraTasksQuery = {
+  taskId?: string;
+  q?: string;
+  sort?: string;
+  page?: number;
+  key?: string;
+  limit?: number;
+  state?: 'live' | 'test';
+  dateStart?: string;
+  dateEnd?: string;
 };
 
 export const MDHARURA_INDICATORS = {
@@ -219,6 +242,15 @@ export type Unit = {
   updatedAt: Date;
 };
 
+export type UnitPage = {
+  docs: Unit[];
+  total: number;
+  limit: number;
+  page: number;
+  pages: number;
+  sort: string;
+};
+
 export type TaskPage = {
   docs: Task[];
   total: number;
@@ -422,29 +454,29 @@ export function formatIndicator(
     COUNTY: unit.parent?.parent?.name,
     SUBCOUNTY: unit.parent?.name,
 
-    HEBS_SIGNALS_REPORTED: indicators['HEBS_SIGNALS_REPORTED'],
-    HEBS_SIGNALS_VERIFIED: indicators['HEBS_SIGNALS_VERIFIED'],
-    HEBS_SIGNALS_VERIFIED_TRUE: indicators['HEBS_SIGNALS_VERIFIED_TRUE'],
-    HEBS_SIGNALS_RISK_ASSESSED: indicators['HEBS_SIGNALS_RISK_ASSESSED'],
-    HEBS_SIGNALS_RESPONDED: indicators['HEBS_SIGNALS_RESPONDED'],
-    HEBS_SIGNALS_TO_BE_ESCALATED: indicators['HEBS_SIGNALS_TO_BE_ESCALATED'],
-    HEBS_SIGNALS_ESCALATED: indicators['HEBS_SIGNALS_ESCALATED'],
+    HEBS_SIGNALS_REPORTED: indicators.get('HEBS_SIGNALS_REPORTED'),
+    HEBS_SIGNALS_VERIFIED: indicators.get('HEBS_SIGNALS_VERIFIED'),
+    HEBS_SIGNALS_VERIFIED_TRUE: indicators.get('HEBS_SIGNALS_VERIFIED_TRUE'),
+    HEBS_SIGNALS_RISK_ASSESSED: indicators.get('HEBS_SIGNALS_RISK_ASSESSED'),
+    HEBS_SIGNALS_RESPONDED: indicators.get('HEBS_SIGNALS_RESPONDED'),
+    HEBS_SIGNALS_TO_BE_ESCALATED: indicators.get('HEBS_SIGNALS_TO_BE_ESCALATED'),
+    HEBS_SIGNALS_ESCALATED: indicators.get('HEBS_SIGNALS_ESCALATED'),
 
-    CEBS_SIGNALS_REPORTED: indicators['CEBS_SIGNALS_REPORTED'],
-    CEBS_SIGNALS_VERIFIED: indicators['CEBS_SIGNALS_VERIFIED'],
-    CEBS_SIGNALS_VERIFIED_TRUE: indicators['CEBS_SIGNALS_VERIFIED_TRUE'],
-    CEBS_SIGNALS_RISK_ASSESSED: indicators['CEBS_SIGNALS_RISK_ASSESSED'],
-    CEBS_SIGNALS_RESPONDED: indicators['CEBS_SIGNALS_RESPONDED'],
-    CEBS_SIGNALS_TO_BE_ESCALATED: indicators['CEBS_SIGNALS_TO_BE_ESCALATED'],
-    CEBS_SIGNALS_ESCALATED: indicators['CEBS_SIGNALS_ESCALATED'],
-    CHVS_REGISTERED: indicators['CHVS_REGISTERED'],
-    CHVS_REPORTING: indicators['CHVS_REPORTING'],
-    CHAS_REGISTERED: indicators['CHAS_REGISTERED'],
-    CHAS_VERIFYING: indicators['CHAS_VERIFYING'],
-    HCWS_REGISTERED: indicators['HCWS_REGISTERED'],
-    HCWS_REPORTING: indicators['HCWS_REPORTING'],
-    SFPS_REGISTERED: indicators['SFPS_REGISTERED'],
-    SFPS_VERIFYING: indicators['SFPS_VERIFYING'],
+    CEBS_SIGNALS_REPORTED: indicators.get('CEBS_SIGNALS_REPORTED'),
+    CEBS_SIGNALS_VERIFIED: indicators.get('CEBS_SIGNALS_VERIFIED'),
+    CEBS_SIGNALS_VERIFIED_TRUE: indicators.get('CEBS_SIGNALS_VERIFIED_TRUE'),
+    CEBS_SIGNALS_RISK_ASSESSED: indicators.get('CEBS_SIGNALS_RISK_ASSESSED'),
+    CEBS_SIGNALS_RESPONDED: indicators.get('CEBS_SIGNALS_RESPONDED'),
+    CEBS_SIGNALS_TO_BE_ESCALATED: indicators.get('CEBS_SIGNALS_TO_BE_ESCALATED'),
+    CEBS_SIGNALS_ESCALATED: indicators.get('CEBS_SIGNALS_ESCALATED'),
+    CHVS_REGISTERED: indicators.get('CHVS_REGISTERED'),
+    CHVS_REPORTING: indicators.get('CHVS_REPORTING'),
+    CHAS_REGISTERED: indicators.get('CHAS_REGISTERED'),
+    CHAS_VERIFYING: indicators.get('CHAS_VERIFYING'),
+    HCWS_REGISTERED: indicators.get('HCWS_REGISTERED'),
+    HCWS_REPORTING: indicators.get('HCWS_REPORTING'),
+    SFPS_REGISTERED: indicators.get('SFPS_REGISTERED'),
+    SFPS_VERIFYING: indicators.get('SFPS_VERIFYING'),
   };
 }
 

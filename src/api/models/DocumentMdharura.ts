@@ -1,6 +1,6 @@
 import { MDHARURA_RAW_LINELIST_TABLE } from '../../config/ebs';
 import { db } from '../../database/config';
-import { DataTypes, Model, Optional } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
 export interface DocumentMdharuraAttributes {
   _ID: string;
@@ -474,11 +474,9 @@ export interface DocumentMdharuraAttributes {
   PMEBS_REQUESTFORM_VIA: string;
   PMEBS_REQUESTFORM_CREATEDAT: Date;
   PMEBS_REQUESTFORM_UPDATEDAT: Date;
-
-  id: number;
 }
 
-export type DocumentMdharuraInput = Optional<DocumentMdharuraAttributes, 'id'>;
+export type DocumentMdharuraInput = DocumentMdharuraAttributes;
 
 class DocumentMdharura extends Model<DocumentMdharuraAttributes> implements DocumentMdharuraAttributes {
   public USER: string;
@@ -927,27 +925,26 @@ class DocumentMdharura extends Model<DocumentMdharuraAttributes> implements Docu
   public PMEBS_REQUESTFORM_VIA: string;
   public PMEBS_REQUESTFORM_CREATEDAT: Date;
   public PMEBS_REQUESTFORM_UPDATEDAT: Date;
-
-  public id: number;
 }
 
 DocumentMdharura.init(
   {
     _ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
       unique: true,
+      primaryKey: true,
     },
     _STATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_NAME: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_CREATEDAT: {
@@ -959,31 +956,31 @@ DocumentMdharura.init(
       allowNull: false,
     },
     UNIT_CODE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_UID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_STATE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_TYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_SUGGESTIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_UNITS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_DATELASTREPORTED_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_DATELASTREPORTED_TEST: {
@@ -1003,11 +1000,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     UNIT_PARENT_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_NAME: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_CREATEDAT: {
@@ -1019,35 +1016,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     UNIT_PARENT_CODE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_UID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_STATE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_TYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_SUGGESTIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_UNITS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_DATELASTREPORTED_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_DATELASTREPORTED_TEST: {
@@ -1063,16 +1060,16 @@ DocumentMdharura.init(
       allowNull: true,
     },
     UNIT_PARENT_DATELASTREPORTED_CREATEDAT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
 
     UNIT_PARENT_PARENT_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_NAME: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_CREATEDAT: {
@@ -1084,35 +1081,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     UNIT_PARENT_PARENT_CODE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_UID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_PARENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_STATE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_TYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_SUGGESTIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_UNITS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_DATELASTREPORTED_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_PARENT_PARENT_DATELASTREPORTED_TEST: {
@@ -1128,33 +1125,33 @@ DocumentMdharura.init(
       allowNull: true,
     },
     UNIT_PARENT_PARENT_DATELASTREPORTED_CREATEDAT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
 
     USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
 
     SIGNALID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     SIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     SUGGESTIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNITS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_CREATEDAT: {
@@ -1166,31 +1163,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_SOURCE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_ISMATCHINGSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_UPDATEDSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_ISREPORTEDBEFORE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_DATEHEALTHTHREATSTARTED: {
@@ -1198,15 +1195,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_INFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_OTHERINFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_DATEVERIFIED: {
@@ -1214,11 +1211,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_ISTHREATSTILLEXISTING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_THREATTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_DATESCDSCINFORMED: {
@@ -1226,11 +1223,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_VERIFICATIONFORM_CREATEDAT: {
@@ -1242,11 +1239,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_DATESCDSCINFORMED: {
@@ -1258,7 +1255,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_SYMPTOMS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_HUMANCASES: {
@@ -1282,15 +1279,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ISCAUSEKNOWN: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ISLABSAMPLESCOLLECTED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_DATESAMPLECOLLECTED: {
@@ -1298,7 +1295,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_LABRESULTS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_DATELABRESULTSRECEIVED: {
@@ -1306,35 +1303,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMINITIALAREA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMNEWAREAS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_RISKCLASSIFICATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_ISEVENTINFECTIOUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_EVENTCATEGORIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_SYSTEMSAFFECTEDBYEVENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_DATESCMOHINFORMED: {
@@ -1342,11 +1339,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_INVESTIGATIONFORM_CREATEDAT: {
@@ -1358,15 +1355,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_RESPONSEFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_DATESCMOHINFORMED: {
@@ -1378,19 +1375,19 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_RESPONSEFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_OTHERRESPONSEACTIVITY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_OUTCOMEOFRESPONSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_RECOMMENDATIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_DATEESCALATED: {
@@ -1402,15 +1399,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_RESPONSEFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_RESPONSEFORM_CREATEDAT: {
@@ -1422,31 +1419,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_SUMMARYFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_EVENTSTATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_ESCALATEDTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_SUMMARYFORM_CREATEDAT: {
@@ -1458,15 +1455,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_DATERESPONSESTARTED: {
@@ -1474,11 +1471,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_REASON: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_REASONOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_DATEESCALATED: {
@@ -1486,7 +1483,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     CEBS_ESCALATIONFORM_CREATEDAT: {
@@ -1499,7 +1496,7 @@ DocumentMdharura.init(
     },
 
     HEBS_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_CREATEDAT: {
@@ -1511,31 +1508,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_SOURCE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_ISMATCHINGSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_UPDATEDSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_ISREPORTEDBEFORE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_DATEHEALTHTHREATSTARTED: {
@@ -1543,15 +1540,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_INFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_OTHERINFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_DATEVERIFIED: {
@@ -1559,11 +1556,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_ISTHREATSTILLEXISTING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_THREATTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_DATESCDSCINFORMED: {
@@ -1571,11 +1568,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_VERIFICATIONFORM_CREATEDAT: {
@@ -1587,11 +1584,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_DATESCDSCINFORMED: {
@@ -1603,7 +1600,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_SYMPTOMS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_HUMANCASES: {
@@ -1627,15 +1624,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ISCAUSEKNOWN: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ISLABSAMPLESCOLLECTED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_DATESAMPLECOLLECTED: {
@@ -1643,7 +1640,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_LABRESULTS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_DATELABRESULTSRECEIVED: {
@@ -1651,35 +1648,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMINITIALAREA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMNEWAREAS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_RISKCLASSIFICATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_ISEVENTINFECTIOUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_EVENTCATEGORIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_SYSTEMSAFFECTEDBYEVENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_DATESCMOHINFORMED: {
@@ -1687,11 +1684,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_INVESTIGATIONFORM_CREATEDAT: {
@@ -1703,15 +1700,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_RESPONSEFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_DATESCMOHINFORMED: {
@@ -1723,19 +1720,19 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_RESPONSEFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_OTHERRESPONSEACTIVITY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_OUTCOMEOFRESPONSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_RECOMMENDATIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_DATEESCALATED: {
@@ -1747,15 +1744,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_RESPONSEFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_RESPONSEFORM_CREATEDAT: {
@@ -1767,31 +1764,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_SUMMARYFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_EVENTSTATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_ESCALATEDTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SUMMARYFORM_CREATEDAT: {
@@ -1803,15 +1800,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_DATERESPONSESTARTED: {
@@ -1819,11 +1816,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_REASON: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_REASONOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_DATEESCALATED: {
@@ -1831,7 +1828,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_ESCALATIONFORM_CREATEDAT: {
@@ -1844,7 +1841,7 @@ DocumentMdharura.init(
     },
 
     VEBS_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_CREATEDAT: {
@@ -1856,31 +1853,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_SOURCE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_ISMATCHINGSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_UPDATEDSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_ISREPORTEDBEFORE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_DATEHEALTHTHREATSTARTED: {
@@ -1888,15 +1885,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_INFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_OTHERINFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_DATEVERIFIED: {
@@ -1904,11 +1901,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_ISTHREATSTILLEXISTING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_THREATTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_DATESCDSCINFORMED: {
@@ -1916,11 +1913,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_VERIFICATIONFORM_CREATEDAT: {
@@ -1932,11 +1929,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_DATESCDSCINFORMED: {
@@ -1948,7 +1945,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_SYMPTOMS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_HUMANCASES: {
@@ -1972,15 +1969,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ISCAUSEKNOWN: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ISLABSAMPLESCOLLECTED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_DATESAMPLECOLLECTED: {
@@ -1988,7 +1985,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_LABRESULTS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_DATELABRESULTSRECEIVED: {
@@ -1996,35 +1993,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMINITIALAREA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ISNEWCASEDREPORTEDFROMNEWAREAS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_RISKCLASSIFICATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_ISEVENTINFECTIOUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_EVENTCATEGORIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_SYSTEMSAFFECTEDBYEVENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_DATESCMOHINFORMED: {
@@ -2032,11 +2029,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_INVESTIGATIONFORM_CREATEDAT: {
@@ -2048,15 +2045,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_RESPONSEFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_DATESCMOHINFORMED: {
@@ -2068,19 +2065,19 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_RESPONSEFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_OTHERRESPONSEACTIVITY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_OUTCOMEOFRESPONSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_RECOMMENDATIONS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_DATEESCALATED: {
@@ -2092,15 +2089,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_RESPONSEFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_RESPONSEFORM_CREATEDAT: {
@@ -2112,31 +2109,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_SUMMARYFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_EVENTSTATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_ESCALATEDTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_SUMMARYFORM_CREATEDAT: {
@@ -2148,15 +2145,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_DATERESPONSESTARTED: {
@@ -2164,11 +2161,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_REASON: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_REASONOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_DATEESCALATED: {
@@ -2176,7 +2173,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     VEBS_ESCALATIONFORM_CREATEDAT: {
@@ -2188,7 +2185,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_CREATEDAT: {
@@ -2200,27 +2197,27 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_ISMATCHINGSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_UPDATEDSIGNAL: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_ISREPORTEDBEFORE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_DATEHEALTHTHREATSTARTED: {
@@ -2228,15 +2225,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_INFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_OTHERINFORMANT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_DATEVERIFIED: {
@@ -2244,7 +2241,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_ISSTILLHAPPENING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_DATESCDSCINFORMED: {
@@ -2252,11 +2249,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_VERIFICATIONFORM_CREATEDAT: {
@@ -2268,11 +2265,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_DATESCDSCINFORMED: {
@@ -2292,43 +2289,43 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ISCOVID19WORKINGCASEDEFINITIONMET: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ISEVENTSETTINGPROMOTINGSPREAD: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASUREHANDHYGIENE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASURETEMPSCREENING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASUREPHYSICALDISTANCING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASURESOCIALDISTANCING: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASUREUSEOFMASKS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_MEASUREVENTILATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_SYMPTOMS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_SYMPTOMSOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ISSAMPLESCOLLECTED: {
@@ -2340,35 +2337,35 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_RISKCLASSIFICATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_ISEVENTINFECTIOUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_EVENTCATEGORIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_SYSTEMSAFFECTEDBYEVENT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_INVESTIGATIONFORM_CREATEDAT: {
@@ -2380,11 +2377,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
 
@@ -2405,39 +2402,39 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ISCOVID19WORKINGCASEDEFINITIONMET: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ISCIFFILLEDANDSAMPLESCOLLECTED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_REASONSNOSAMPLECOLLECTEDOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_REASONSNOSAMPLECOLLECTED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ISHUMANSQUARANTINEDFOLLOWEDUP: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_EVENTSTATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_RESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_RESPONSEACTIVITIESOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ADDITIONALRESPONSEACTIVITIES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_HUMANSQUARANTINEDSELF: {
@@ -2489,31 +2486,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_RESPONSEFORM_QUARANTINETYPES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ISHUMANSISOLATED: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ISOLATIONTYPES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_EVENTSTATUSES: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_ADDITIONALINFORMATION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_RESPONSEFORM_CREATEDAT: {
@@ -2525,31 +2522,31 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_SUMMARYFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_EVENTSTATUS: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_ESCALATEDTO: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_CAUSE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_SPOT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_SUMMARYFORM_CREATEDAT: {
@@ -2561,15 +2558,15 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_EVENTTYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_DATERESPONSESTARTED: {
@@ -2577,11 +2574,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_REASON: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_REASONOTHER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_DATEESCALATED: {
@@ -2589,7 +2586,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     LEBS_ESCALATIONFORM_CREATEDAT: {
@@ -2602,7 +2599,7 @@ DocumentMdharura.init(
     },
 
     PMEBS_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_CREATEDAT: {
@@ -2614,11 +2611,11 @@ DocumentMdharura.init(
       allowNull: true,
     },
     PMEBS_REPORTFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_DATEDETECTED: {
@@ -2626,19 +2623,19 @@ DocumentMdharura.init(
       allowNull: true,
     },
     PMEBS_REPORTFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_SOURCE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_UNIT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_LOCALITY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_DATEREPORTED: {
@@ -2646,7 +2643,7 @@ DocumentMdharura.init(
       allowNull: true,
     },
     PMEBS_REPORTFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REPORTFORM_CREATEDAT: {
@@ -2658,23 +2655,23 @@ DocumentMdharura.init(
       allowNull: true,
     },
     PMEBS_REQUESTFORM_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_USER: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_DESCRIPTION: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_UNIT: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_LOCALITY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_DATEREPORTED: {
@@ -2687,7 +2684,7 @@ DocumentMdharura.init(
     },
 
     PMEBS_REQUESTFORM_VIA: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     PMEBS_REQUESTFORM_CREATEDAT: {
@@ -2698,14 +2695,11 @@ DocumentMdharura.init(
       type: DataTypes.DATE,
       allowNull: true,
     },
-
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
-    },
   },
   {
+    createdAt: 'CREATED_AT',
+    updatedAt: 'UPDATED_AT',
+    deletedAt: 'DELETED_AT',
     tableName: MDHARURA_RAW_LINELIST_TABLE,
     freezeTableName: true,
     timestamps: true,

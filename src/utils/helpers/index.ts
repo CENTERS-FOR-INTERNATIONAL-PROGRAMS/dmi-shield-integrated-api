@@ -20,3 +20,10 @@ export function encodeQueryString(params: { [x: string]: string | number | boole
     ? '?' + keys.map((key) => encodeURIComponent(key) + '=' + encodeURIComponent(params[key])).join('&')
     : '';
 }
+
+export function getDaysArray(start: Date, end: Date) {
+  for (var dates: Date[] = [], dt = new Date(start); dt <= new Date(end); dt.setDate(dt.getDate() + 1)) {
+    dates.push(new Date(dt));
+  }
+  return dates;
+}

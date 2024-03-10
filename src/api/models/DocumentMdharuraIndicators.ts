@@ -1,6 +1,6 @@
 import { MDHARURA_RAW_AGGREGATES_TABLE } from '../../config/ebs';
 import { db } from '../../database/config';
-import { DataTypes, Model, Optional } from 'sequelize';
+import { DataTypes, Model } from 'sequelize';
 
 export interface DocumentMdharuraIndicatorsAttributes {
   DATE_START: Date;
@@ -39,11 +39,9 @@ export interface DocumentMdharuraIndicatorsAttributes {
   HCWS_REPORTING: number;
   SFPS_REGISTERED: number;
   SFPS_VERIFYING: number;
-
-  id: number;
 }
 
-export type DocumentMdharuraIndicatorsInput = Optional<DocumentMdharuraIndicatorsAttributes, 'id'>;
+export type DocumentMdharuraIndicatorsInput = DocumentMdharuraIndicatorsAttributes;
 
 class DocumentMdharuraIndicators
   extends Model<DocumentMdharuraIndicatorsAttributes>
@@ -83,8 +81,6 @@ class DocumentMdharuraIndicators
   public HCWS_REPORTING: number;
   public SFPS_REGISTERED: number;
   public SFPS_VERIFYING: number;
-
-  public id: number;
 }
 
 DocumentMdharuraIndicators.init(
@@ -92,25 +88,28 @@ DocumentMdharuraIndicators.init(
     DATE_START: {
       type: DataTypes.DATE,
       allowNull: false,
+      primaryKey: true,
     },
     DATE_END: {
       type: DataTypes.DATE,
       allowNull: false,
+      primaryKey: true,
     },
     COUNTY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     SUBCOUNTY: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_ID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
+      primaryKey: true,
     },
     UNIT_NAME: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     UNIT_CREATEDAT: {
@@ -122,117 +121,138 @@ DocumentMdharuraIndicators.init(
       allowNull: false,
     },
     UNIT_CODE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_UID: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_STATE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     UNIT_TYPE: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: true,
     },
     HEBS_SIGNALS_REPORTED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_VERIFIED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_VERIFIED_TRUE: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_RISK_ASSESSED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_RESPONDED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_TO_BE_ESCALATED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HEBS_SIGNALS_ESCALATED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
 
     CEBS_SIGNALS_REPORTED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_VERIFIED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_VERIFIED_TRUE: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_RISK_ASSESSED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_RESPONDED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_TO_BE_ESCALATED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CEBS_SIGNALS_ESCALATED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CHVS_REGISTERED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CHVS_REPORTING: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CHAS_REGISTERED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     CHAS_VERIFYING: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HCWS_REGISTERED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     HCWS_REPORTING: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     SFPS_REGISTERED: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      defaultValue: 0,
     },
     SFPS_VERIFYING: {
       type: DataTypes.INTEGER,
       allowNull: true,
-    },
-    id: {
-      type: DataTypes.INTEGER,
-      primaryKey: true,
-      autoIncrement: true,
+      defaultValue: 0,
     },
   },
   {
+    createdAt: 'CREATED_AT',
+    updatedAt: 'UPDATED_AT',
+    deletedAt: 'DELETED_AT',
+
     tableName: MDHARURA_RAW_AGGREGATES_TABLE,
     freezeTableName: true,
     timestamps: true,
@@ -263,6 +283,7 @@ DocumentMdharuraIndicators.init(
       },
       {
         fields: ['UNIT_ID', 'DATE_START', 'DATE_END'],
+        unique: true,
       },
     ],
   },
