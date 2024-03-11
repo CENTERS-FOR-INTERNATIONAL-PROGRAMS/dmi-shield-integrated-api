@@ -149,7 +149,7 @@ class EbsController {
       Logger.info(`Mediator: [mDharura Analytics Channel] Fetching Unit Indicators, Units: ${units.length}`);
 
       let unitsChunk = [];
-      for await (const unit of units.slice(0, 20)) {
+      for await (const unit of units) {
         unitsChunk.push(unit);
 
         if (unitsChunk.length >= CHUNK_SIZE) {
