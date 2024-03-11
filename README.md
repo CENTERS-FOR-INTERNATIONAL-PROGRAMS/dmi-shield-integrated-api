@@ -100,23 +100,23 @@ Before installation, make sure you have the following prerequisites
     ```sh
     git clone git@github.com:CENTERS-FOR-INTERNATIONAL-PROGRAMS/dmi-shield-integrated-api.git
     ```
-2. Install NPM packages
+2. Install yarn packages
     ```sh
-    npm ci
+    yarn install
     ```
 3. Create `.env` file in main directory
 4. Copy and customize envs from `.env.copy`
 5. Test and build the project
     ```sh
-    npm run build
+    yarn run build
     ```
 6. Sync database tables
     ```sh
-    npm run sync-db
+    yarn run sync-db
     ```
 7. Run the server
     ```sh
-    npm run start
+    yarn run start
     ```
 8. Access swagger docs from `localhost:3001/docs/v1`
 
