@@ -1,0 +1,4 @@
+export const OPENHIM_USERNAME = process.env.OPENHIM_USERNAME;
+export const OPENHIM_PASSWORD = process.env.OPENHIM_PASSWORD;
+export const OPENHIM_CORE_API_URL = process.env.OPENHIM_CORE_API_URL;
+export const OPENHIM_TRUST_SELF_SIGNED = process.env.OPENHIM_TRUST_SELF_SIGNED;

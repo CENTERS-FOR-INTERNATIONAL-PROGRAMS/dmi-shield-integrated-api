@@ -1,57 +1,77 @@
 {
-    "urn": "urn:mediator:shield",
-    "version": "1.0.0",
-    "name": "SHIELD Mediator",
-    "description": "A mediator that pulls data from different health systems.",
-    "defaultChannelConfig": [
+  "urn": "urn:mediator:shield",
+  "version": "1.0.0",
+  "name": "SHIELD Mediator",
+  "description": "A mediator that pulls data from different health systems.",
+  "defaultChannelConfig": [
+    {
+      "name": "Documents Upload Channel",
+      "urlPattern": "^/api/v1/documents$",
+      "description": "This channel processes documents and files uploaded to SHIELD",
+      "routes": [
         {
-            "name": "Documents Upload Channel",
-            "urlPattern": "^/api/v1/documents$",
-            "description": "This channel processes documents and files uploaded to SHIELD",
-            "routes": [
-                {
-                    "name": "Upload Route",
-                    "host": "host.docker.internal",
-                    "port": "3000",
-                    "path": "/api/v1/documents/",
-                    "primary": true,
-                    "type": "http",
-                    "forwardAuthHeader": true
-                }
-            ],
-            "allow": ["admin"],
-            "methods": ["GET", "POST", "OPTIONS"],
-            "type": "http",
-            "authType": "public"
-        },
-        {
-            "name": "mDharura Channel",
-            "urlPattern": "^/api/v1/ebs/mdharura$",
-            "description": "This pulls data from mDharura and adds it to SHIELD repository.",
-            "routes": [
-                {
-                    "name": "mDharura Route",
-                    "host": "host.docker.internal",
-                    "port": "3000",
-                    "path": "/api/v1/ebs/mdharura/",
-                    "primary": true,
-                    "type": "http",
-                    "forwardAuthHeader": true
-                }
-            ],
-            "allow": ["admin"],
-            "type": "polling",
-            "pollingSchedule": "* 10 * * *",
-            "status": "enabled"
+          "name": "Upload Route",
+          "host": "host.docker.internal",
+          "port": "3000",
+          "path": "/api/v1/documents/",
+          "primary": true,
+          "type": "http",
+          "forwardAuthHeader": true
         }
-    ],
-    "endpoints": [
+      ],
+      "allow": ["admin"],
+      "methods": ["GET", "POST", "OPTIONS"],
+      "type": "http",
+      "authType": "public"
+    },
+    {
+      "name": "mDharura Channel",
+      "urlPattern": "^/api/v1/ebs/mdharura$",
+      "description": "This pulls data from mDharura and adds it to SHIELD repository.",
+      "routes": [
         {
-            "name": "SHIELD API Endpoint",
-            "host": "host.docker.internal",
-            "port": "3000",
-            "primary": true,
-            "type": "http"
+          "name": "mDharura Route",
+          "host": "host.docker.internal",
+          "port": "3000",
+          "path": "/api/v1/ebs/mdharura/",
+          "primary": true,
+          "type": "http",
+          "forwardAuthHeader": true
         }
-    ]
+      ],
+      "allow": ["admin"],
+      "type": "polling",
+      "pollingSchedule": "* 10 * * *",
+      "status": "enabled"
+    },
+    {
+      "name": "mDharura Analytics Channel",
+      "urlPattern": "^/api/v1/ebs/mdharura/analytics$",
+      "description": "This pulls indicators aggregates data from mDharura and adds it to SHIELD repository.",
+      "routes": [
+        {
+          "name": "mDharura Analytics Route",
+          "host": "host.docker.internal",
+          "port": "3000",
+          "path": "/api/v1/ebs/mdharura/analytics/",
+          "primary": true,
+          "type": "http",
+          "forwardAuthHeader": true
+        }
+      ],
+      "allow": ["admin"],
+      "type": "polling",
+      "pollingSchedule": "* 10 * * *",
+      "status": "enabled"
+    }
+  ],
+  "endpoints": [
+    {
+      "name": "SHIELD API Endpoint",
+      "host": "host.docker.internal",
+      "port": "3000",
+      "primary": true,
+      "type": "http"
+    }
+  ]
 }
