@@ -249,9 +249,9 @@ DocumentMdharuraIndicators.init(
     },
   },
   {
-    createdAt: 'CREATED_AT',
-    updatedAt: 'UPDATED_AT',
-    deletedAt: 'DELETED_AT',
+    createdAt: 'CREATEDAT',
+    updatedAt: 'UPDATEDAT',
+    deletedAt: 'DELETEDAT',
 
     tableName: MDHARURA_RAW_AGGREGATES_TABLE,
     schema: MDHARURA_RAW_SCHEMA,
