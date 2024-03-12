@@ -1,4 +1,4 @@
-import { MDHARURA_RAW_AGGREGATES_TABLE } from '../../config/ebs';
+import { MDHARURA_RAW_AGGREGATES_TABLE, MDHARURA_RAW_SCHEMA } from '../../config/ebs';
 import { db } from '../../database/config';
 import { DataTypes, Model } from 'sequelize';
 
@@ -249,11 +249,12 @@ DocumentMdharuraIndicators.init(
     },
   },
   {
-    createdAt: 'CREATED_AT',
-    updatedAt: 'UPDATED_AT',
-    deletedAt: 'DELETED_AT',
+    createdAt: 'CREATEDAT',
+    updatedAt: 'UPDATEDAT',
+    deletedAt: 'DELETEDAT',
 
     tableName: MDHARURA_RAW_AGGREGATES_TABLE,
+    schema: MDHARURA_RAW_SCHEMA,
     freezeTableName: true,
     timestamps: true,
     paranoid: true,

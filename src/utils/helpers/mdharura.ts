@@ -263,6 +263,8 @@ export type TaskPage = {
 export type Task = {
   _id: string;
   _status: string;
+  createdAt: Date;
+  updatedAt: Date;
   user: string;
   unit: Unit;
   signalId: string;
@@ -484,6 +486,8 @@ export function formatTask(task: Task): DocumentMdharuraInput {
   return {
     _ID: task._id,
     _STATUS: task._status,
+    CREATEDAT: task.createdAt,
+    UPDATEDAT: task.updatedAt,
     UNIT_ID: task.unit._id,
     UNIT_NAME: task.unit.name,
     UNIT_CREATEDAT: task.unit.createdAt,
