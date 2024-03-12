@@ -5,6 +5,8 @@ import { DataTypes, Model } from 'sequelize';
 export interface DocumentMdharuraAttributes {
   _ID: string;
   _STATUS: string;
+  CREATEDAT: Date;
+  UPDATEDAT: Date;
   UNIT_ID: string;
   UNIT_NAME: string;
   UNIT_CREATEDAT: Date;
@@ -481,6 +483,8 @@ export type DocumentMdharuraInput = DocumentMdharuraAttributes;
 class DocumentMdharura extends Model<DocumentMdharuraAttributes> implements DocumentMdharuraAttributes {
   public USER: string;
   public _ID: string;
+  public CREATEDAT: Date;
+  public UPDATEDAT: Date;
   public _STATUS: string;
   public UNIT_ID: string;
   public UNIT_NAME: string;
@@ -937,6 +941,14 @@ DocumentMdharura.init(
     },
     _STATUS: {
       type: DataTypes.TEXT,
+      allowNull: false,
+    },
+    CREATEDAT: {
+      type: DataTypes.DATE,
+      allowNull: false,
+    },
+    UPDATEDAT: {
+      type: DataTypes.DATE,
       allowNull: false,
     },
     UNIT_ID: {
@@ -2697,13 +2709,10 @@ DocumentMdharura.init(
     },
   },
   {
-    createdAt: 'CREATED_AT',
-    updatedAt: 'UPDATED_AT',
-    deletedAt: 'DELETED_AT',
     tableName: MDHARURA_RAW_LINELIST_TABLE,
     schema: MDHARURA_RAW_SCHEMA,
     freezeTableName: true,
-    timestamps: true,
+    timestamps: false,
     paranoid: true,
     sequelize: db,
     indexes: [
