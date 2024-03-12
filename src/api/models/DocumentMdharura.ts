@@ -1,4 +1,4 @@
-import { MDHARURA_RAW_LINELIST_TABLE } from '../../config/ebs';
+import { MDHARURA_RAW_LINELIST_TABLE, MDHARURA_RAW_SCHEMA } from '../../config/ebs';
 import { db } from '../../database/config';
 import { DataTypes, Model } from 'sequelize';
 
@@ -2701,6 +2701,7 @@ DocumentMdharura.init(
     updatedAt: 'UPDATED_AT',
     deletedAt: 'DELETED_AT',
     tableName: MDHARURA_RAW_LINELIST_TABLE,
+    schema: MDHARURA_RAW_SCHEMA,
     freezeTableName: true,
     timestamps: true,
     paranoid: true,
